@@ -7,10 +7,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Interactive rating component</title>
-
  
   <style>
-
     .attribution { 
       font-size: 11px; 
       position: fixed;
@@ -40,14 +38,9 @@
       left: 50%;
       transform: translate(-50%, -50%);
       border-radius: 30px;
-    }
-
-
-
-    .rating-state{
       padding: 40px;
-   
     }
+
 
     .icon-star{
       background-color:hsl(220, 14%, 30%);
@@ -59,44 +52,86 @@
       font-size: 26px;
       font-weight: 700;
     }
-    .paragraph-rating-state{
+    .paragraph-rating-state, .paragraph-thank-you{
       color: hsl(217, 12%, 63%);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 400;
       line-height: 24px;
     }
-    .rating-btn-group{
-      border: 1px solid white;
 
-   
-     
-     
-    }
     .rating-btn-group button{
       border: none;
       background-color: hsl(216, 12%, 54%);
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       border-radius: 100%;
-      font-size: 15px;
+      font-size: 16px;
       cursor: pointer;
-      margin-left: 15px;
-     
-  
+      margin-right: 12px;
+      color: white;
+      font-weight: 500;
     }
     .rating-btn-group button:hover{
       background-color: hsl(217, 12%, 63%);
     }
-   
+
+    .submit-btn{
+      border: none;
+      background-color: hsl(25, 97%, 53%);
+      width: 345px;
+      height: 50px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      color: white;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+    .submit-btn:hover{
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(25, 97%, 53%);
+    }
+
+    .illustration-thank-you{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .selection-msg{
+      width:fit-content;
+      color: hsl(25, 97%, 53%);
+      padding: 10px 15px 10px 15px;
+      border-radius: 30px;
+      background-color: hsl(215, 21%, 23%);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    .heading-thank-you{
+      color: hsl(0, 0%, 100%);
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .paragraph-thank-you{
+      text-align: center;
+      font-size: 16px;
+    }
 
 
-
+    .rating-state{
+      
+    }
     .thank-you-state{
       display: none;
     }
 
   </style>
 </head>
+
 <body>
 
   <!-- Rating state start -->
@@ -113,12 +148,8 @@
         <button>5</button>
       </div>
 
-      <button class="sumbit-btn" id="sumbit-btn">Submit</button>
+      <button class="submit-btn" id="submit-btn">SUBMIT</button>
 
-
-    </div>
-
-    <div class="thank-you-card">
 
     </div>
   
@@ -127,9 +158,10 @@
   <!-- Thank you state start -->
 
   <div class="thank-you-state">
-    <p class="selection">You selected <!-- Add rating here --> out of 5</p>
-    <p>Thank you!</p>
-    <p>We appreciate you taking the time to give a rating. If you ever need more support, 
+    <img src="images\illustration-thank-you.svg" class="illustration-thank-you">
+    <p class="selection-msg">You selected <!-- Add rating here --> out of 5</p>
+    <p class="heading-thank-you">Thank you!</p>
+    <p class="paragraph-thank-you">We appreciate you taking the time to give a rating. If you ever need more support, 
         don’t hesitate to get in touch!</p>
   </div>
 

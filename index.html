@@ -2,48 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
   <title>Frontend Mentor | Interactive rating component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+ 
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution { 
+      font-size: 11px; 
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, -50%);
+      color: rgb(241, 241, 241);
+    }
+
+    .attribution a { 
+      color: hsl(266, 68%, 62%); 
+    }
+
+    body{
+      background-color: hsl(216, 12%, 8%);
+      font-family: 'Kumbh Sans', sans-serif;
+      font-family: 'Outfit', sans-serif;
+      font-family: 'Overpass', sans-serif;
+    }
+
+    .rating-state, .thank-you-state{
+      background-color: hsl(213, 19%, 18%);
+      width: 360px;
+      height: 360px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 30px;
+      padding: 40px;
+    }
+
+
+    .icon-star{
+      background-color:hsl(220, 14%, 30%);
+      border-radius: 100%;
+      padding: 10px;
+    }
+    .heading-rating-state{
+      color: hsl(0, 0%, 100%);
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .paragraph-rating-state, .paragraph-thank-you{
+      color: hsl(217, 12%, 63%);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    }
+
+    .btn{
+      border: none;
+      background-color: hsl(216, 12%, 54%);
+      width: 55px;
+      height: 55px;
+      border-radius: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      margin-right: 12px;
+      color: white;
+      font-weight: 500;
+    }
+    .btn:hover{
+      background-color: hsl(217, 12%, 63%);
+    }
+
+    .submit-btn{
+      border: none;
+      background-color: hsl(25, 97%, 53%);
+      width: 345px;
+      height: 50px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 400;
+      color: white;
+      margin-top: 30px;
+      letter-spacing: 2px;
+    }
+    .submit-btn:hover{
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(25, 97%, 53%);
+    }
+
+    .illustration-thank-you{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .selection-msg{
+      width:fit-content;
+      color: hsl(25, 97%, 53%);
+      padding: 10px 15px 10px 15px;
+      border-radius: 30px;
+      background-color: hsl(215, 21%, 23%);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+
+    .heading-thank-you{
+      color: hsl(0, 0%, 100%);
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .paragraph-thank-you{
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .selected-btn{
+    background-color: hsl(25, 97%, 53%);
+    }
+    .selected-btn:hover{
+    background-color: hsl(25, 97%, 53%);
+    }
+
+    .thank-you-state{
+      display: none;
+    }
+
+    @media only screen and (max-width: 450px){
+      .rating-state, .thank-you-state{
+          width: 250px;
+          height: 330px;
+        }
+
+        .btn{
+          width: 38px;
+          height: 38px;
+          margin-right: 8px;
+
+        }
+
+        .submit-btn{
+          width: 250px;
+          height: 40px;
+        }
+        
+        .paragraph-rating-state, .paragraph-thank-you{
+          font-size: 15px;
+          line-height: 22px;
+        }
+    }
+
+
   </style>
 </head>
+
 <body>
 
-  <!-- Rating state start -->
+    <div class="rating-state" id="rating-state">
+      <img src="images\icon-star.svg" class="icon-star">
+      <p class="heading-rating-state">How did we do?</p>
+      <p class="paragraph-rating-state">Please let us know how we did with your support request. All feedback is appreciated 
+                            to help us improve our offering!</p>
+      <div class="rating-btn-group" id="rating-btn-group">
+        <button class="btn" value="1">1</button>
+        <button class="btn" value="2">2</button>
+        <button class="btn" value="3">3</button>
+        <button class="btn" value="4">4</button>
+        <button class="btn" value="5">5</button>
+      </div>
+      <button class="submit-btn" id="submit-btn" onclick="clickedSubmit()">SUBMIT</button>
+    </div>
 
-  How did we do?
-
-  Please let us know how we did with your support request. All feedback is appreciated 
-  to help us improve our offering!
-
-  1 2 3 4 5
-
-  Submit
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  You selected <!-- Add rating here --> out of 5
-
-  Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!
-
-  <!-- Thank you state end -->
-
+  <div class="thank-you-state" id="thank-you-state">
+    <img src="images\illustration-thank-you.svg" class="illustration-thank-you">
+    <p class="selection-msg" id="selection-msg"></p>
+    <p class="heading-thank-you">Thank you!</p>
+    <p class="paragraph-thank-you">We appreciate you taking the time to give a rating. If you ever need more support, 
+        don't hesitate to get in touch!</p>
+  </div>
   
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. <br>
     Coded by <a href="#">Your Name Here</a>.
   </div>
+
+  <script>
+
+    const rating_buttons = document.querySelectorAll('.btn');
+
+    rating_buttons.forEach(rating_button => {
+      rating_button.onclick = () => selectedButton(rating_button);
+    })
+
+    function selectedButton (btn) {
+      rating = btn.value;
+      document.getElementById("selection-msg").innerHTML = "You selected " + rating + " out of 5" ;
+      rating_buttons.forEach(buttonUnselected => {
+        buttonUnselected.classList.remove('selected-btn');
+      })
+      btn.classList.add('selected-btn');
+    }
+
+    function clickedSubmit(){
+      document.getElementById("rating-state").style.display = "none";
+      document.getElementById("thank-you-state").style.display = "block";
+    }
+    
+  </script>
 </body>
 </html>
